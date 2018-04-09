@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "855970923489",
+    "firebase_url": "https://musicians-f3daa.firebaseio.com",
+    "project_id": "musicians-f3daa",
+    "storage_bucket": "musicians-f3daa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855970923489:android:49d887c9a5b07a4c",
+        "android_client_info": {
+          "package_name": "com.example.zach.musicians"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855970923489-k5a6sk0aunb582pf5meereo72pgmm944.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.zach.musicians",
+            "certificate_hash": "d805dc47a24a3fe386f8cea728973dce7cfd6711"
+          }
+        },
+        {
+          "client_id": "855970923489-6m4ibr9rvsjaiscbqbb9er50aakph2lr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB98S2hw3jdQ06TfB51BsiEddW6htxNU50"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "855970923489-6m4ibr9rvsjaiscbqbb9er50aakph2lr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
