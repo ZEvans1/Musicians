@@ -4,49 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.LoginActivity">
+    tools:context=".ui.LoginActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <EditText
         android:id="@+id/userNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="51dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginRight="85dp"
-        android:layout_marginStart="84dp"
         android:ems="10"
         android:hint="User Name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupTextView" />
 
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="54dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginRight="85dp"
-        android:layout_marginStart="84dp"
+        android:layout_marginBottom="135dp"
         android:ems="10"
         android:hint="User Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/userNameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/userNameEditText" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="34dp"
-        android:layout_marginEnd="149dp"
-        android:layout_marginLeft="147dp"
-        android:layout_marginRight="149dp"
-        android:layout_marginStart="147dp"
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,14 +46,8 @@
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="154dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginLeft="162dp"
-        android:layout_marginRight="164dp"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="60dp"
         android:text="App Name"
-        app:layout_constraintBottom_toTopOf="@+id/userNameEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -71,16 +55,16 @@
     <TextView
         android:id="@+id/signupTextView"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="197dp"
         android:layout_marginEnd="55dp"
-        android:layout_marginLeft="282dp"
+        android:layout_marginLeft="58dp"
         android:layout_marginRight="55dp"
-        android:layout_marginStart="282dp"
+        android:layout_marginStart="58dp"
         android:layout_marginTop="16dp"
         android:text="Sign Up"
         app:layout_constraintBottom_toTopOf="@+id/userNameEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/appNameTextView"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
