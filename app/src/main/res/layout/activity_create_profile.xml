@@ -4,110 +4,121 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CreateProfileActivity">
+    tools:context=".ui.CreateProfileActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/setUserNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="95dp"
+        android:layout_marginBottom="87dp"
         android:layout_marginTop="16dp"
         android:ems="10"
+        android:hint="User Name"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintBottom_toTopOf="@+id/instrumentSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/instrumentSpinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="31dp"
-        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="35dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="71dp"
+        android:layout_marginRight="35dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner2"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/genreSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/instrumentButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/setUserNameEditText" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/instrumentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="149dp"
-        android:text="Button"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        android:text="Add Instrument"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinner"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/instrumentSpinner"
+        app:layout_constraintTop_toTopOf="@+id/instrumentSpinner" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/genreSpinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="18dp"
-        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="41dp"
+        android:layout_marginEnd="65dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="73dp"
+        android:layout_marginRight="65dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/setUserBioEditText"
+        app:layout_constraintEnd_toStartOf="@+id/genreButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/instrumentSpinner" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/genreButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="24dp"
-        android:text="Button"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp"
+        android:layout_marginTop="34dp"
+        android:text="Add Genre"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinner2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintStart_toEndOf="@+id/genreSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/instrumentButton" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/setUserBioEditText"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginEnd="26dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="55dp"
+        android:layout_marginRight="26dp"
         android:layout_marginStart="16dp"
         android:ems="10"
+        android:hint="User Bio"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/switch2"
-        app:layout_constraintEnd_toStartOf="@+id/switch1"
+        app:layout_constraintBottom_toTopOf="@+id/giggerSwitch"
+        app:layout_constraintEnd_toStartOf="@+id/collaboratorSwitch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/genreSpinner" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/collaboratorSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:layout_marginRight="56dp"
-        android:layout_marginTop="46dp"
-        android:text="Switch"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginRight="63dp"
+        android:text="Collaborate?"
+        app:layout_constraintBottom_toTopOf="@+id/giggerSwitch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintStart_toEndOf="@+id/setUserBioEditText" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/giggerSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="93dp"
-        android:text="Switch"
+        android:layout_marginBottom="42dp"
+        android:text="Gigs?"
+        app:layout_constraintBottom_toTopOf="@+id/setDetailsButton"
+        app:layout_constraintEnd_toEndOf="@+id/collaboratorSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/setUserBioEditText" />
+
+    <Button
+        android:id="@+id/setDetailsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Submit Details"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/switch1"
-        app:layout_constraintStart_toStartOf="@+id/switch1"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/giggerSwitch" />
 
 </android.support.constraint.ConstraintLayout>
