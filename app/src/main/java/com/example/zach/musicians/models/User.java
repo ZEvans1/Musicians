@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 @Parcel
 public class User {
+    String uid;
     String userName;
     String userLocation;
     ArrayList<String> userInstruments;
@@ -16,7 +17,8 @@ public class User {
 
     public User() {}
 
-    public User(String userName, String userLocation, ArrayList<String> userInstruments, ArrayList<String> userGenres, String userBio, Boolean collaborator, Boolean lookingForGigs) {
+    public User(String uid, String userName, String userLocation, ArrayList<String> userInstruments, ArrayList<String> userGenres, String userBio, Boolean collaborator, Boolean lookingForGigs) {
+        this.uid = uid;
         this.userName = userName;
         this.userLocation = userLocation;
         this.userInstruments = userInstruments;
@@ -24,6 +26,14 @@ public class User {
         this.userBio = userBio;
         this.collaborator = collaborator;
         this.lookingForGigs = lookingForGigs;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getUserName() {

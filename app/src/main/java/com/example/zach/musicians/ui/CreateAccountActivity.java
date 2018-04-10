@@ -14,13 +14,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.zach.musicians.Constants;
 import com.example.zach.musicians.R;
+import com.example.zach.musicians.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +36,12 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     private FirebaseAuth.AuthStateListener mAuthListener;
     private ProgressDialog mAuthProgressDialog;
     private String mName;
+    private String mLocation;
+    private ArrayList<String> mInstruments;
+    private ArrayList<String> mGenres;
+    private String mBio;
+    private Boolean mCollaborator;
+    private Boolean mGigger;
 
     @BindView(R.id.createAccountButton) Button mCreateAccountButton;
     @BindView(R.id.userNameEditText) EditText mUserNameEditText;
@@ -97,12 +109,31 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                 mAuthProgressDialog.dismiss();
                 if (task.isSuccessful()) {
                     createFirebaseUserProfile(task.getResult().getUser());
+                    createNewUserModel();
                 } else {
                     Toast.makeText(CreateAccountActivity.this, "Auth fail", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
+    }
+
+    private void createNewUserModel() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        mLocation = "location";
+        mInstruments = new ArrayList<String>();
+        mGenres = new ArrayList<String>();
+        mBio = "user bio";
+        mCollaborator = false;
+        mGigger = false;
+
+        User mUser = new User(uid, mName, mLocation, mInstruments, mGenres, mBio, mCollaborator, mGigger);
+        DatabaseReference userRef = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_USERS)
+                .child(uid);
+        userRef.setValue(mUser);
     }
 
     private boolean isValidEmail(String email) {
