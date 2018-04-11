@@ -77,10 +77,16 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
         final String bio = mSetUserBioEditText.getText().toString().trim();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("users")
+        DatabaseReference nameRef = database.getReference("users")
                 .child(firebaseUser.getUid())
                 .child("userName");
 
-        ref.setValue(name);
+        nameRef.setValue(name);
+
+        DatabaseReference bioRef = database.getReference("users")
+                .child(firebaseUser.getUid())
+                .child("userBio");
+
+        bioRef.setValue(bio);
     }
 }
