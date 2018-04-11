@@ -2,19 +2,25 @@ package com.example.zach.musicians.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.zach.musicians.Constants;
 import com.example.zach.musicians.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -43,10 +49,25 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
-//        FirebaseDatabase instrumentDB = FirebaseDatabase.getInstance();
-//        DatabaseReference instrumentRef = instrumentDB.getReference("users")
-//                .child(firebaseUser.getUid())
-//                .child()
+        FirebaseDatabase instrumentDB = FirebaseDatabase.getInstance();
+        DatabaseReference instrumentRef = instrumentDB.getReference("users")
+                .child(firebaseUser.getUid())
+                .child("userInstruments");
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                GenericTypeIndicator<ArrayList<String>> t = new GenericTypeIndicator<ArrayList<String>>() {};
+                ArrayList<String> mInstrumentArray = snapshot.getValue(t);
+                Log.d("hello", mInstrumentArray.toString());
+            }
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+                Log.e("The read failed: " ,firebaseError.getMessage());
+            }
+        };
+        instrumentRef.addValueEventListener(postListener);
+
 
         Spinner instrumentSpinner = (Spinner) findViewById(R.id.instrumentSpinner);
         ArrayAdapter<CharSequence> instrumentAdapter = ArrayAdapter.createFromResource(this,
@@ -67,6 +88,12 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
+        if (view == mInstrumentButton) {
+            String instrument = mInstrumentSpinner.getSelectedItem().toString();
+//            instrumentArray.add(instrument);
+            Log.d("adding", instrument);
+//            Log.d("array", instrumentArray.toString());
+        }
         if (view == mSetDetailsButton) {
             setUserDetails();
         }
