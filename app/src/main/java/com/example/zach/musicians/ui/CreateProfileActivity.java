@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
 public class CreateProfileActivity extends AppCompatActivity implements View.OnClickListener {
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     private FirebaseAuth mAuth;
-    private ArrayList<String> instrumentArray;
+    private ArrayList<String> instrumentArray = new ArrayList<String>();
 
     @BindView(R.id.setUserNameEditText) EditText mSetUserNameEditText;
     @BindView(R.id.instrumentSpinner) Spinner mInstrumentSpinner;
@@ -90,9 +90,9 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
         if (view == mInstrumentButton) {
             String instrument = mInstrumentSpinner.getSelectedItem().toString();
-//            instrumentArray.add(instrument);
+            instrumentArray.add(instrument);
             Log.d("adding", instrument);
-//            Log.d("array", instrumentArray.toString());
+            Log.d("array", instrumentArray.toString());
         }
         if (view == mSetDetailsButton) {
             setUserDetails();
@@ -108,12 +108,22 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
                 .child(firebaseUser.getUid())
                 .child("userName");
 
-        nameRef.setValue(name);
+        if (!name.equals("")) {
+            nameRef.setValue(name);
+        }
 
         DatabaseReference bioRef = database.getReference("users")
                 .child(firebaseUser.getUid())
                 .child("userBio");
 
-        bioRef.setValue(bio);
+        if (!bio.equals("")) {
+            bioRef.setValue(bio);
+        }
+
+        DatabaseReference instrumentRef = database.getReference("users")
+                .child(firebaseUser.getUid())
+                .child("userInstruments");
+
+        instrumentRef.setValue(instrumentArray);
     }
 }
