@@ -3,6 +3,7 @@ package com.example.zach.musicians.ui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -15,15 +16,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CreateProfileActivity extends AppCompatActivity implements View.OnClickListener {
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     private FirebaseAuth mAuth;
-    private String setName;
-    private String setBio;
-
+    private ArrayList<String> instrumentArray;
 
     @BindView(R.id.setUserNameEditText) EditText mSetUserNameEditText;
     @BindView(R.id.instrumentSpinner) Spinner mInstrumentSpinner;
@@ -42,6 +43,12 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+        Spinner instrumentSpinner = (Spinner) findViewById(R.id.instrumentSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.instruments_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        instrumentSpinner.setAdapter(adapter);
 
         mInstrumentButton.setOnClickListener(this);
         mGenreButton.setOnClickListener(this);
