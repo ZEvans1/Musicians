@@ -45,10 +45,16 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
         mAuth = FirebaseAuth.getInstance();
 
         Spinner instrumentSpinner = (Spinner) findViewById(R.id.instrumentSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> instrumentAdapter = ArrayAdapter.createFromResource(this,
                 R.array.instruments_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        instrumentSpinner.setAdapter(adapter);
+        instrumentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        instrumentSpinner.setAdapter(instrumentAdapter);
+
+        Spinner genreSpinner = (Spinner) findViewById(R.id.genreSpinner);
+        ArrayAdapter<CharSequence> genreAdapter = ArrayAdapter.createFromResource(this,
+                R.array.genres_array, android.R.layout.simple_spinner_item);
+        genreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genreSpinner.setAdapter(genreAdapter);
 
         mInstrumentButton.setOnClickListener(this);
         mGenreButton.setOnClickListener(this);
