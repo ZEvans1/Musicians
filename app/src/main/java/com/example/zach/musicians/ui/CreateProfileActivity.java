@@ -31,6 +31,7 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     private FirebaseAuth mAuth;
     private ArrayList<String> instrumentArray = new ArrayList<String>();
+    private ArrayList<String> genreArray = new ArrayList<String>();
 
     @BindView(R.id.setUserNameEditText) EditText mSetUserNameEditText;
     @BindView(R.id.instrumentSpinner) Spinner mInstrumentSpinner;
@@ -50,9 +51,15 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase instrumentDB = FirebaseDatabase.getInstance();
+        FirebaseDatabase genreDB = FirebaseDatabase.getInstance();
+
         DatabaseReference instrumentRef = instrumentDB.getReference("users")
                 .child(firebaseUser.getUid())
                 .child("userInstruments");
+
+        DatabaseReference genreRef = genreDB.getReference("users")
+                .child(firebaseUser.getUid())
+                .child("userGenres");
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override
@@ -68,6 +75,20 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
         };
         instrumentRef.addValueEventListener(postListener);
 
+        ValueEventListener postListenerGenre = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                GenericTypeIndicator<ArrayList<String>> t = new GenericTypeIndicator<ArrayList<String>>() {};
+                ArrayList<String> mGenreArray = snapshot.getValue(t);
+                Log.d("hello", mGenreArray.toString());
+            }
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+                Log.e("The read failed: " ,firebaseError.getMessage());
+            }
+        };
+        genreRef.addValueEventListener(postListenerGenre);
+
 
         Spinner instrumentSpinner = (Spinner) findViewById(R.id.instrumentSpinner);
         ArrayAdapter<CharSequence> instrumentAdapter = ArrayAdapter.createFromResource(this,
@@ -81,7 +102,7 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
         genreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genreSpinner.setAdapter(genreAdapter);
 
-        Log.d("array", instrumentArray.toString());
+//        Log.d("array", instrumentArray.toString());
 
         mInstrumentButton.setOnClickListener(this);
         mGenreButton.setOnClickListener(this);
@@ -95,6 +116,11 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
             instrumentArray.add(instrument);
             Log.d("adding", instrument);
             Log.d("array", instrumentArray.toString());
+        }
+
+        if (view == mGenreButton) {
+            String genre = mGenreSpinner.getSelectedItem().toString();
+            genreArray.add(genre);
         }
         if (view == mSetDetailsButton) {
             setUserDetails();
@@ -128,6 +154,14 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
 
         if (!instrumentArray.isEmpty()) {
             instrumentRef.setValue(instrumentArray);
+        }
+
+        DatabaseReference genreRef = database.getReference("users")
+                .child(firebaseUser.getUid())
+                .child("userGenres");
+
+        if (!genreArray.isEmpty()) {
+            genreRef.setValue(genreArray);
         }
 
     }
