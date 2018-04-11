@@ -116,6 +116,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         mCollaborator = false;
         mGigger = false;
 
+        mInstruments.add("");
+        mGenres.add("");
+
         User mUser = new User(uid, mName, mLocation, mInstruments, mGenres, mBio, mCollaborator, mGigger);
         DatabaseReference userRef = FirebaseDatabase
                 .getInstance()

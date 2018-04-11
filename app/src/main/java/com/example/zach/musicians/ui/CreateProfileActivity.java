@@ -43,6 +43,10 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
+//        FirebaseDatabase instrumentDB = FirebaseDatabase.getInstance();
+//        DatabaseReference instrumentRef = instrumentDB.getReference("users")
+//                .child(firebaseUser.getUid())
+//                .child()
 
         Spinner instrumentSpinner = (Spinner) findViewById(R.id.instrumentSpinner);
         ArrayAdapter<CharSequence> instrumentAdapter = ArrayAdapter.createFromResource(this,
