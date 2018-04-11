@@ -81,6 +81,8 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
         genreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genreSpinner.setAdapter(genreAdapter);
 
+        Log.d("array", instrumentArray.toString());
+
         mInstrumentButton.setOnClickListener(this);
         mGenreButton.setOnClickListener(this);
         mSetDetailsButton.setOnClickListener(this);
@@ -124,6 +126,9 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
                 .child(firebaseUser.getUid())
                 .child("userInstruments");
 
-        instrumentRef.setValue(instrumentArray);
+        if (!instrumentArray.isEmpty()) {
+            instrumentRef.setValue(instrumentArray);
+        }
+
     }
 }
