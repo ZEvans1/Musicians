@@ -23,13 +23,16 @@ import com.google.firebase.database.ValueEventListener;
 import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class UserProfileFragment extends Fragment {
     @BindView(R.id.userNameTextView) TextView mUserNameTextView;
     @BindView(R.id.userBioTextView) TextView mUserBioTextView;
-
+    @BindView(R.id.instrumentTextView) TextView mInstrumentTextView;
 
 
     private User mUser;
@@ -69,6 +72,23 @@ public class UserProfileFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {}
+        });
+
+
+        currentUserRef.child("userInstruments").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<String> userInstruments = new ArrayList<>();
+                for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                    userInstruments.add(childSnapshot.getValue().toString());
+                }
+                mInstrumentTextView.setText(userInstruments.get(0));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("Instruments","Error");
+            }
         });
 
         return view;
