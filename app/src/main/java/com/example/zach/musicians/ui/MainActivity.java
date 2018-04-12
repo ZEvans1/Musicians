@@ -77,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
                 case R.id.action_search:
-                //something
+                Intent intentSearch = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intentSearch);
                 break;
 
                 case R.id.action_messages:

@@ -74,11 +74,11 @@ public class UserProfileFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-
         currentUserRef.child("userInstruments").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<String> userInstruments = new ArrayList<>();
+
                 for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
                     userInstruments.add(childSnapshot.getValue().toString());
                 }
