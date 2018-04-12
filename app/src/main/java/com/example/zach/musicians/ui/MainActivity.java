@@ -88,10 +88,10 @@ public class MainActivity extends AppCompatActivity {
         }
         mSelectedItem = item.getItemId();
 
-//        for (int i = 0; i< mBottomNav.getMenu().size(); i++) {
-//            MenuItem menuItem = mBottomNav.getMenu().getItem(i);
-//            menuItem.setChecked(menuItem.getItemId() == item.getItemId());
-//        }
+        for (int i = 0; i< mBottomNav.getMenu().size(); i++) {
+            MenuItem menuItem = mBottomNav.getMenu().getItem(i);
+            menuItem.setChecked(menuItem.getItemId() == item.getItemId());
+        }
 
     }
 
