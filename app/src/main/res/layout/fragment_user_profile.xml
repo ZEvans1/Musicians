@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.UserProfileFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/restaurantImageView"
+            android:layout_width="231dp"
+            android:layout_height="173dp"
+            android:layout_marginBottom="293dp"
+            android:layout_marginEnd="76dp"
+            android:layout_marginLeft="77dp"
+            android:layout_marginRight="76dp"
+            android:layout_marginStart="77dp"
+            android:layout_marginTop="9dp"
+            android:src="@drawable/emptyuser"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userNameTextView" />
+
+        <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
+            android:layout_marginEnd="157dp"
+            android:layout_marginLeft="158dp"
+            android:layout_marginRight="157dp"
+            android:layout_marginStart="158dp"
+            android:layout_marginTop="17dp"
+            android:text="User Name"
+            app:layout_constraintBottom_toTopOf="@+id/restaurantImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/userBioTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="247dp"
+            android:layout_marginEnd="307dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="307dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="245dp"
+            android:text="User Bio"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>
