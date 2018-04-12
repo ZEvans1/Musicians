@@ -25,7 +25,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.zach.musicians.ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.SearchActivity"></activity>
+        <activity android:name=".ui.SearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.zach.musicians.ui.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
